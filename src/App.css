@@ -22,13 +22,16 @@ form {
   justify-content: center;
   gap: 8px;
   margin-bottom: 32px;
+  flex-wrap: wrap;
 }
 
 input[type="text"] {
   padding: 8px;
   border-radius: 6px;
-  border: 1px solid #ccc;
-  width: 240px;
+  border: 1px solid #fff;
+  width: 100%;
+  max-width: 240px;
+  flex: 1;
 }
 
 button {
@@ -39,6 +42,8 @@ button {
   border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
+  width: 100%;
+  max-width: 120px;
 }
 
 button:hover {
@@ -51,7 +56,6 @@ p {
 
 ul {
   list-style: none;
-
   margin-bottom: 16px;
 }
 
@@ -79,6 +83,8 @@ li {
 
 img {
   width: 300px;
+  max-width: 300px;
+  height: auto;
 }
 
 @media (max-width: 600px) {
@@ -86,23 +92,5 @@ img {
     flex-direction: column;
     align-items: stretch;
     gap: 12px;
-  }
-
-  input[type="text"] {
-    width: 100%;
-  }
-
-  button {
-    width: 100%;
-  }
-
-  img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-  }
-
-  .list-indices {
-    grid-template-columns: 1fr;
   }
 }
