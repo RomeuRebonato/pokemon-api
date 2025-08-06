@@ -5,7 +5,6 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  Link,
   useNavigate,
   useParams,
 } from "react-router-dom";
@@ -34,7 +33,7 @@ function Home() {
   const inputRef = useRef();
   const navigate = useNavigate();
 
-  const { data, error, isError, refetch } = useQuery({
+  const { data, error, isError, isFetching, refetch } = useQuery({
     queryKey: ["pokemon-search"],
     queryFn: () => fetchPokemon(inputRef.current.value),
     enabled: false,
@@ -68,29 +67,33 @@ function Home() {
         />
         <button
           type="submit"
-          className="p-2 px-10 bg-blue-600 hover:bg-blue-800 text-white font-bold rounded-md w-full max-w-[120px]"
+          className=" flex items-center justify-center p-2 px-10 bg-blue-600 hover:bg-blue-800 text-white font-bold rounded-md w-full max-w-[120px]"
         >
           Buscar
         </button>
       </form>
 
-      {isError && <p className="text-red-600 mb-4">{error.message}</p>}
-
-      {data && (
-        <div className="mt-6 space-y-4 text-center">
-          <h2 className="text-2xl font-bold text-center uppercase text-gray-800">
-            {data.data.name.toUpperCase()} (ID: {data.id})
-          </h2>
-          <div className="flex justify-center">
-            <img
-              src={data.data.sprites.front_default}
-              alt="Imagem do Pokémon"
-              className="w-[300px] cursor-pointer hover:scale-105 transition-all duration-200"
-              onClick={handleClick}
-            />
-          </div>
-        </div>
+      {isFetching && (
+        <p className="text-center text-blue-600 font-semibold mb-4">
+          Carregando...
+        </p>
       )}
+
+      {isError ? (
+        <p className="flex justify-center text-red-600 mb-4">{error.message}</p>
+      ) : data ? (
+        <div className="flex justify-center flex-col items-center gap-4">
+          <h2 className="text-2xl font-bold text-center uppercase text-gray-800">
+            {data.data.name.toUpperCase()} (ID: {data.data.id})
+          </h2>
+          <img
+            src={data.data.sprites.front_default}
+            alt="Imagem do Pokémon"
+            className="w-[300px] cursor-pointer hover:scale-105 transition-all duration-200"
+            onClick={handleClick}
+          />
+        </div>
+      ) : null}
     </div>
   );
 }
