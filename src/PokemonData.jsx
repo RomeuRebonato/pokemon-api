@@ -15,7 +15,8 @@ function PokemonData({ data, species }) {
 
       <div className="space-y-2">
         <p>
-          <strong>Tipo:</strong> {data.types.map((t) => t.type.name).join(", ")}
+          <strong>Tipo do pokemon:</strong>{" "}
+          {data.types.map((t) => t.type.name).join(", ")}
         </p>
         <p>
           <strong>Altura:</strong> {data.height} cm
