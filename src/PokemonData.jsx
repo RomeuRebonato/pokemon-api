@@ -22,10 +22,10 @@ function PokemonData({ data, species }) {
           <strong>Altura do pokemon:</strong> {data.height} cm
         </p>
         <p>
-          <strong>Peso:</strong> {data.weight / 10} kg
+          <strong>Peso do pokemon:</strong> {data.weight / 10} kg
         </p>
         <p>
-          <strong>XP Base:</strong> {data.base_experience}
+          <strong>XP Base do pokemon:</strong> {data.base_experience}
         </p>
       </div>
 
