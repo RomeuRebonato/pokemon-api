@@ -19,7 +19,7 @@ function PokemonData({ data, species }) {
           {data.types.map((t) => t.type.name).join(", ")}
         </p>
         <p>
-          <strong>Altura:</strong> {data.height} cm
+          <strong>Altura do pokemeon:</strong> {data.height} cm
         </p>
         <p>
           <strong>Peso:</strong> {data.weight / 10} kg
